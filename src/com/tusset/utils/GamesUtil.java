@@ -50,7 +50,7 @@ public class GamesUtil {
         HashMap<String, String> hashGames = getGamesDesktop();
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        double widthWindow = screenSize.getWidth();
+        double widthWindow = (screenSize.getWidth() - 200);
 
         boolean verify = false;
         int x = 0;
@@ -65,6 +65,7 @@ public class GamesUtil {
 
             JButton btn = new JButton(game);
             btn.setBorder(null);
+            btn.setFocusPainted(false);
             btn.setBackground(new Color(2, 107, 14));
             btn.setForeground(Color.WHITE);
             btn.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -113,9 +114,15 @@ public class GamesUtil {
             if (verify) {
                 x += 190;
 
-                if ((x + 190) >= (widthWindow - 190)) {
+                if ((x + 190) >= (widthWindow - 50)) {
                     x = 0;
-                    y = 210;
+                    if (y == 210) {
+                        y = 400;
+                    } else if (y == 400) {
+                        y = 590;
+                    } else {
+                        y = 210;
+                    }
                 }
             }
             btn.setBounds(x, y, 170, 170);
