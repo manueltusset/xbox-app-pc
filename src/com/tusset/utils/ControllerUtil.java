@@ -1,8 +1,7 @@
 package com.tusset.utils;
 
-import com.tusset.Frame;
+import com.tusset.Main.Frame;
 import com.tusset.template.Actions;
-import java.util.ArrayList;
 import net.java.games.input.Component;
 import net.java.games.input.Controller;
 import net.java.games.input.ControllerEnvironment;
@@ -13,9 +12,8 @@ import net.java.games.input.ControllerEnvironment;
  */
 public class ControllerUtil {
 
-    public static ArrayList<Controller> getControllers() {
+    public static Controller getController() {
         final Controller[] retController = ControllerEnvironment.getDefaultEnvironment().getControllers();
-        ArrayList<Controller> controllers = new ArrayList<>();
 
         for (Controller controller : retController) {
             if (controller.getType() == Controller.Type.STICK
@@ -23,11 +21,11 @@ public class ControllerUtil {
                     || controller.getType() == Controller.Type.WHEEL
                     || controller.getType() == Controller.Type.FINGERSTICK) {
                 if (controller.poll()) {
-                    controllers.add(controller);
+                    return controller;
                 }
             }
         }
-        return controllers;
+        return null;
     }
 
     public static void getActionController(Controller controller, final Frame window) {
@@ -75,12 +73,12 @@ public class ControllerUtil {
     }
 
     public static boolean checkControllersConnected(final Frame window) {
-        ArrayList<Controller> controllers = ControllerUtil.getControllers();
-        if (controllers.isEmpty()) {
+        Controller controller = ControllerUtil.getController();
+        if (controller == null) {
             window.getLblDevice().setText("No device connected");
             return false;
         } else {
-            window.getLblDevice().setText("Device Connected: " + controllers.get(0).getName());
+            window.getLblDevice().setText("Device Connected: " + controller.getName());
         }
         return true;
     }

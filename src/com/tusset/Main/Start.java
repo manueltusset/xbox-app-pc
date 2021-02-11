@@ -1,4 +1,4 @@
-package com.tusset;
+package com.tusset.Main;
 
 import com.tusset.utils.ControllerUtil;
 import java.util.logging.Level;
@@ -19,7 +19,7 @@ public class Start {
         window.setVisible(true);
 
         if (ControllerUtil.checkControllersConnected(window)) {
-            controller = ControllerUtil.getControllers().get(0);
+            controller = ControllerUtil.getController();
             threadActions();
         }
     }
