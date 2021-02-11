@@ -1,9 +1,11 @@
-package com.tusset.utils;
+package com.tusset.utils.games;
 
 import com.tusset.Main.Frame;
+import com.tusset.utils.Util;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +18,7 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.border.MatteBorder;
 
@@ -59,11 +62,16 @@ public class GamesUtil {
         Set<String> games = hashGames.keySet();
         for (String game : games) {
             String pathGame = hashGames.get(game);
-
-            System.out.println("Game: " + game);
-            System.out.println("Path: " + pathGame);
-
             JButton btn = new JButton(game);
+
+            try {
+                ImageIcon icon = Util.getImageGame(game);
+                icon = Util.resizeImage(icon, 170, 170, Image.SCALE_SMOOTH);
+                btn.setIcon(icon);
+                btn.setText(null);
+            } catch (Exception e) {
+            }
+
             btn.setBorder(null);
             btn.setFocusPainted(false);
             btn.setBackground(new Color(2, 107, 14));

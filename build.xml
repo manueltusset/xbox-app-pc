@@ -76,5 +76,6 @@
         <copy file="./jinput-raw.dll" todir="./dist/"/>
         <copy file="./jinput-raw_64.dll" todir="./dist/"/>
         <copy file="./jinput-wintab.dll" todir="./dist/"/>
+        <copy file="./run.bat" todir="./dist/"/>
     </target>
 </project>

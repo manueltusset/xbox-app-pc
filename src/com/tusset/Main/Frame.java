@@ -2,7 +2,7 @@ package com.tusset.Main;
 
 import com.tusset.template.Actions;
 import com.tusset.utils.FunUtil;
-import com.tusset.utils.GamesUtil;
+import com.tusset.utils.games.GamesUtil;
 import java.awt.AWTException;
 import java.awt.Image;
 import java.awt.Robot;
@@ -28,7 +28,7 @@ public class Frame extends javax.swing.JFrame {
     }
 
     private void setImageXbox() {
-        ImageIcon icon = createImageIcon("../images/xbox.png");
+        ImageIcon icon = createImageIcon("imgs/xbox.png");
 
         if (icon != null) {
             Image img = icon.getImage();
