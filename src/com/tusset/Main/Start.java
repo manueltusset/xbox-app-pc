@@ -14,7 +14,7 @@ public class Start {
     private Frame window;
     private Controller controller;
 
-    public Start() {
+    public Start() throws Exception {
         window = new Frame();
         window.setVisible(true);
 
@@ -40,7 +40,7 @@ public class Start {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         new Start();
     }
 }
