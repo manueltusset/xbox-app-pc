@@ -117,6 +117,7 @@ public class Frame extends javax.swing.JFrame {
         setTitle("Xbox PC - Manuel Tusset");
         setBackground(new java.awt.Color(20, 20, 20));
         setForeground(java.awt.Color.lightGray);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(20, 20, 20));
 
@@ -201,7 +202,7 @@ public class Frame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
