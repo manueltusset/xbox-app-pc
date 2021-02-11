@@ -53,7 +53,7 @@ public class AmazonPrimeVideo implements Fun {
 
     @Override
     public ImageIcon image() throws Exception {
-        URL imgUrl = AmazonPrimeVideo.class.getResource("../../images/fun/prime-video.png");
+        URL imgUrl = AmazonPrimeVideo.class.getResource("imgs/prime-video.png");
         if (imgUrl != null) {
             ImageIcon icon = new ImageIcon(imgUrl);
             icon = Util.resizeImage(icon, imageWidth(), imageHeight(), imageScale());

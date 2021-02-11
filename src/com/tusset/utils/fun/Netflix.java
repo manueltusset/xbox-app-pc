@@ -53,7 +53,7 @@ public class Netflix implements Fun {
 
     @Override
     public ImageIcon image() throws Exception {
-        URL imgUrl = AmazonPrimeVideo.class.getResource("../../images/fun/netflix.png");
+        URL imgUrl = Netflix.class.getResource("imgs/netflix.png");
         if (imgUrl != null) {
             ImageIcon icon = new ImageIcon(imgUrl);
             icon = Util.resizeImage(icon, imageWidth(), imageHeight(), imageScale());
