@@ -8,3 +8,4 @@
 
 #### Esse projeto não tem como intuito um código bem estruturado, o mesmo serviu somente para estudo das funcionalidades do controle de xbox one para windows.
 
+#### VALE SALIENTAR, QUE NA VERSÃO BETA TESTES OS JOGOS DEVEM FICAR EM C:\Users\%username%\Desktop\Games, FUTURAMENTE SERÁ ADICIONADA LEITURA DOS REGISTROS DO WINDOWS PARA BUSCAR DINAMICAMENTE OS JOGOS E SEUS ÍCONES.
