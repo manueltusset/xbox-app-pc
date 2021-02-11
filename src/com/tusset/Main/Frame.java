@@ -26,7 +26,7 @@ public class Frame extends javax.swing.JFrame {
     }
 
     private void setImageXbox() {
-        ImageIcon icon = createImageIcon("images/xbox.png");
+        ImageIcon icon = createImageIcon("../images/xbox.png");
 
         if (icon != null) {
             Image img = icon.getImage();
