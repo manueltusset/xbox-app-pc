@@ -1,4 +1,4 @@
-package com.tusset.utils;
+package com.tusset.utils.controller;
 
 import com.tusset.Main.Frame;
 import com.tusset.template.Actions;

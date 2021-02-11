@@ -1,4 +1,4 @@
-package com.tusset.utils;
+package com.tusset.utils.fun;
 
 import com.tusset.Main.Frame;
 import com.tusset.utils.fun.AmazonPrimeVideo;

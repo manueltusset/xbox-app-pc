@@ -1,6 +1,6 @@
 package com.tusset.Main;
 
-import com.tusset.utils.ControllerUtil;
+import com.tusset.utils.controller.ControllerUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.java.games.input.Controller;
