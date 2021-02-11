@@ -113,7 +113,7 @@ public class GamesUtil {
             if (verify) {
                 x += 190;
 
-                if ((x + 190) >= widthWindow) {
+                if ((x + 190) >= (widthWindow - 190)) {
                     x = 0;
                     y = 210;
                 }
