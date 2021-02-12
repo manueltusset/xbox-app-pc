@@ -1,8 +1,6 @@
 package com.tusset.utils.fun;
 
 import com.tusset.Main.Frame;
-import com.tusset.utils.fun.AmazonPrimeVideo;
-import com.tusset.utils.fun.Netflix;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
