@@ -41,12 +41,22 @@ public class ControllerUtil {
 
                 switch (componentIdentifier.getName()) {
                     case "0":
-                    case "8":
-                    case "9":
-                        window.setAction(Actions.Action.OK);
+                        window.setAction(Actions.Action.BUTTON_A);
                         break;
                     case "1":
-                        window.setAction(Actions.Action.RETURN);
+                        window.setAction(Actions.Action.BUTTON_B);
+                        break;
+                    case "2":
+                        window.setAction(Actions.Action.BUTTON_X);
+                        break;
+                    case "3":
+                        window.setAction(Actions.Action.BUTTON_Y);
+                        break;
+                    case "6":
+                        window.setAction(Actions.Action.BUTTON_MENU_ESQ);
+                        break;
+                    case "7":
+                        window.setAction(Actions.Action.BUTTON_MENU_DIR);
                         break;
                 }
                 continue;
@@ -55,16 +65,16 @@ public class ControllerUtil {
 
                 switch (String.valueOf(hatSwitchPosition)) {
                     case "1.0":
-                        window.setAction(Actions.Action.LEFT);
+                        window.setAction(Actions.Action.SWITCH_LEFT);
                         break;
                     case "0.5":
-                        window.setAction(Actions.Action.RIGHT);
+                        window.setAction(Actions.Action.SWITCH_RIGHT);
                         break;
                     case "0.75":
-                        window.setAction(Actions.Action.DOWN);
+                        window.setAction(Actions.Action.SWITCH_DOWN);
                         break;
                     case "0.25":
-                        window.setAction(Actions.Action.UP);
+                        window.setAction(Actions.Action.SWITCH_UP);
                         break;
                 }
                 continue;

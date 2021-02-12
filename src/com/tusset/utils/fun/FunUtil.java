@@ -26,6 +26,12 @@ public class FunUtil {
 
         final JButton amazonPrimeFun = createAmazonPrimeFun();
         window.getPnlFun().add(amazonPrimeFun);
+
+        final JButton microsoftStore = createStoreFun();
+        window.getPnlAdic().add(microsoftStore);
+
+        final JButton microsoftSettings = createConfigFun();
+        window.getPnlAdic().add(microsoftSettings);
     }
 
     private static JButton createNetflixFun() throws Exception {
@@ -140,5 +146,122 @@ public class FunUtil {
         btn.setBounds(10, 210, 170, 170);
 
         return btn;
+    }
+
+    private static JButton createStoreFun() throws Exception {
+        MicrosoftStore store = new MicrosoftStore();
+
+        JButton btn = new JButton();
+        btn.setBorder(null);
+        btn.setFocusPainted(false);
+        btn.setIcon(store.image());
+        btn.setText(store.text());
+        btn.setBackground(store.background());
+        btn.setForeground(Color.WHITE);
+        btn.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        btn.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                btn.setBorder(new MatteBorder(4, 4, 4, 4, Color.WHITE));
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                btn.setBorder(null);
+            }
+        });
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    store.run();
+                } catch (Exception ex) {
+                    Logger.getLogger(FunUtil.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        btn.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    try {
+                        store.run();
+                    } catch (Exception ex) {
+                        Logger.getLogger(FunUtil.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+        btn.setBounds(10, 10, 170, 170);
+
+        return btn;
+    }
+
+    private static JButton createConfigFun() throws Exception {
+        MicrosoftSettings settings = new MicrosoftSettings();
+
+        JButton btn = new JButton();
+        btn.setBorder(null);
+        btn.setFocusPainted(false);
+        btn.setIcon(settings.image());
+        btn.setText(settings.text());
+        btn.setBackground(settings.background());
+        btn.setForeground(Color.WHITE);
+        btn.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        btn.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                btn.setBorder(new MatteBorder(4, 4, 4, 4, Color.WHITE));
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                btn.setBorder(null);
+            }
+        });
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    settings.run();
+                } catch (Exception ex) {
+                    Logger.getLogger(FunUtil.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        btn.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    try {
+                        settings.run();
+                    } catch (Exception ex) {
+                        Logger.getLogger(FunUtil.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+        btn.setBounds(200, 10, 170, 170);
+        return btn;
+    }
+
+    private static JButton createArchivementsFun() throws Exception {
+        return null;
     }
 }
