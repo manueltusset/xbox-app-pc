@@ -5,9 +5,6 @@ import com.tusset.utils.Util;
 import com.tusset.utils.fun.FunUtil;
 import com.tusset.utils.games.GamesUtil;
 import java.awt.AWTException;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
@@ -28,7 +25,7 @@ public class Frame extends javax.swing.JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         setImages();
-        //createButtonA();
+        setWelcome();
         GamesUtil.populateGames(this);
         GamesUtil.populateLastGame(this);
         FunUtil.populateFun(this);
@@ -44,11 +41,15 @@ public class Frame extends javax.swing.JFrame {
             lblImage.setIcon(icon);
             lblImage.setText(null);
         }
-        Image back = new ImageIcon("imgs/background.jpg").getImage();
-        if (back != null) {
-            Graphics g = pnlGeral.getGraphics();
-            g.drawImage(back, 0, 0, null);
-            pnlGames.paint(g);
+    }
+
+    private void setWelcome() {
+        try {
+            final String fullName = Util.execPowerShell("([adsi]\"WinNT://$env:userdomain/$env:username,user\").fullname");
+            final String welcome = "Welcome, " + fullName + "!";
+            lblUser.setText(welcome);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -62,35 +63,10 @@ public class Frame extends javax.swing.JFrame {
         }
     }
 
-    private void createButtonA() {
-
-        JPanel panelA = new JPanel();
-        panelA.setBackground(new Color(20, 20, 20));
-        panelA.setBounds(0, 0, 50, pnlButtons.getHeight());
-
-        JLabel btnA = new JLabel();
-        ImageIcon A_Icon = createImageIcon("imgs/A.png");
-        A_Icon = Util.resizeImage(A_Icon, 32, 32, Image.SCALE_SMOOTH);
-        btnA.setIcon(A_Icon);
-        btnA.setBounds(0, 0, 32, 32);
-
-        panelA.add(btnA);
-
-        JLabel labelA = new JLabel();
-        labelA.setText("Open");
-        labelA.setFont(new Font("Tahoma", Font.PLAIN, 17));
-        labelA.setBounds(100, 0, 10, 10);
-        labelA.setForeground(Color.WHITE);
-
-        panelA.add(labelA);
-
-        this.pnlButtons.add(panelA);
-    }
-
     public void setAction(Actions.Action action) {
         switch (action) {
-            case UP:
-            case LEFT:
+            case SWITCH_UP:
+            case SWITCH_LEFT:
                 try {
                     Robot robot = new Robot();
                     robot.keyPress(KeyEvent.VK_SHIFT);
@@ -101,8 +77,8 @@ public class Frame extends javax.swing.JFrame {
                     e.printStackTrace();
                 }
                 break;
-            case DOWN:
-            case RIGHT:
+            case SWITCH_DOWN:
+            case SWITCH_RIGHT:
                 try {
                     Robot robot = new Robot();
                     robot.keyPress(KeyEvent.VK_TAB);
@@ -111,7 +87,7 @@ public class Frame extends javax.swing.JFrame {
                     e.printStackTrace();
                 }
                 break;
-            case OK:
+            case BUTTON_A:
                 try {
                     Robot robot = new Robot();
                     robot.keyPress(KeyEvent.VK_ENTER);
@@ -120,7 +96,24 @@ public class Frame extends javax.swing.JFrame {
                     e.printStackTrace();
                 }
                 break;
-            case RETURN:
+            case BUTTON_B:
+                System.exit(0);
+                break;
+            case BUTTON_X:
+                try {
+                    Util.execPowerShell("start xbox:");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case BUTTON_Y:
+                System.out.println("BUTTON_Y");
+                break;
+            case BUTTON_MENU_DIR:
+                System.out.println("BUTTON_MENU_DIR");
+                break;
+            case BUTTON_MENU_ESQ:
+                System.out.println("BUTTON_MENU_ESQ");
                 break;
         }
     }
@@ -157,6 +150,14 @@ public class Frame extends javax.swing.JFrame {
         this.pnlLastGame = pnlLastGame;
     }
 
+    public JPanel getPnlAdic() {
+        return pnlAdic;
+    }
+
+    public void setPnlAdic(JPanel pnlAdic) {
+        this.pnlAdic = pnlAdic;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -177,6 +178,7 @@ public class Frame extends javax.swing.JFrame {
         btnY = new javax.swing.JLabel();
         btnX = new javax.swing.JLabel();
         labelX = new javax.swing.JLabel();
+        pnlAdic = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Xbox PC - Manuel Tusset");
@@ -218,7 +220,7 @@ public class Frame extends javax.swing.JFrame {
 
         lblUser.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblUser.setForeground(new java.awt.Color(255, 255, 255));
-        lblUser.setText("Seja Bem-Vindo, Manuel!");
+        lblUser.setText("Welcome, User!");
 
         pnlLastGame.setBackground(new java.awt.Color(20, 20, 20));
 
@@ -298,6 +300,19 @@ public class Frame extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        pnlAdic.setBackground(new java.awt.Color(20, 20, 20));
+
+        javax.swing.GroupLayout pnlAdicLayout = new javax.swing.GroupLayout(pnlAdic);
+        pnlAdic.setLayout(pnlAdicLayout);
+        pnlAdicLayout.setHorizontalGroup(
+            pnlAdicLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        pnlAdicLayout.setVerticalGroup(
+            pnlAdicLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 180, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout pnlGeralLayout = new javax.swing.GroupLayout(pnlGeral);
         pnlGeral.setLayout(pnlGeralLayout);
         pnlGeralLayout.setHorizontalGroup(
@@ -306,34 +321,36 @@ public class Frame extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlGeralLayout.createSequentialGroup()
-                        .addComponent(pnlLastGame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(10, 10, 10)
+                        .addComponent(lblDevice)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 950, Short.MAX_VALUE)
+                        .addComponent(pnlButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlGeralLayout.createSequentialGroup()
+                        .addComponent(pnlFun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pnlGames, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pnlGeralLayout.createSequentialGroup()
-                        .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlGeralLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(lblDevice)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 950, Short.MAX_VALUE)
-                                .addComponent(pnlButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlGeralLayout.createSequentialGroup()
-                                .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlGeralLayout.createSequentialGroup()
-                                .addComponent(pnlFun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pnlGames, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(24, 24, 24))))
+                        .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pnlGeralLayout.createSequentialGroup()
+                        .addComponent(pnlLastGame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(pnlAdic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(24, 24, 24))
         );
         pnlGeralLayout.setVerticalGroup(
             pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlGeralLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUser)
-                    .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblUser, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addComponent(pnlLastGame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlLastGame, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlAdic, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlFun, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -371,6 +388,7 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JLabel lblDevice;
     private javax.swing.JLabel lblImage;
     private javax.swing.JLabel lblUser;
+    private javax.swing.JPanel pnlAdic;
     private javax.swing.JPanel pnlButtons;
     private javax.swing.JPanel pnlFun;
     private javax.swing.JPanel pnlGames;
