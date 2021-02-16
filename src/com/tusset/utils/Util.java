@@ -1,10 +1,13 @@
 package com.tusset.utils;
 
 import com.tusset.utils.games.GamesUtil;
+import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.HashMap;
 import javax.swing.ImageIcon;
 
 /**
@@ -12,6 +15,10 @@ import javax.swing.ImageIcon;
  * @author mtusset
  */
 public class Util {
+
+    public enum Dimensions {
+        WIDTH, HEIGHT
+    }
 
     public static String getDirUser() {
         return System.getProperty("user.home");
@@ -72,5 +79,15 @@ public class Util {
         Image newImg = img.getScaledInstance(width, height, scale);
         icon = new ImageIcon(newImg);
         return icon;
+    }
+
+    public static HashMap<Util.Dimensions, Integer> getDimensions() {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+        HashMap<Util.Dimensions, Integer> dim = new HashMap<>();
+        dim.put(Dimensions.WIDTH, (int) screenSize.getWidth());
+        dim.put(Dimensions.HEIGHT, (int) screenSize.getHeight());
+
+        return dim;
     }
 }

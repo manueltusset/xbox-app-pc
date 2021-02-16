@@ -5,10 +5,13 @@ import com.tusset.utils.Util;
 import com.tusset.utils.fun.FunUtil;
 import com.tusset.utils.games.GamesUtil;
 import java.awt.AWTException;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.net.URL;
+import java.util.HashMap;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,7 +23,10 @@ import javax.swing.JPanel;
  */
 public class Frame extends javax.swing.JFrame {
 
+    public static HashMap<Util.Dimensions, Integer> dimensions;
+
     public Frame() throws Exception {
+        setDimensions();
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
 
@@ -29,6 +35,10 @@ public class Frame extends javax.swing.JFrame {
         GamesUtil.populateGames(this);
         GamesUtil.populateLastGame(this);
         FunUtil.populateFun(this);
+    }
+
+    private void setDimensions() {
+        dimensions = Util.getDimensions();
     }
 
     private void setImages() {
@@ -162,7 +172,15 @@ public class Frame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlGeral = new javax.swing.JPanel();
+        pnlGeral = new javax.swing.JPanel() {
+            public void paintComponent(Graphics g) {
+                super.paintComponent(g);
+
+                
+                ImageIcon original = new ImageIcon(Frame.class.getResource("imgs/background.jpg"));
+                g.drawImage(original.getImage(), 0, 0, this);
+            }
+        };
         lblImage = new javax.swing.JLabel();
         pnlGames = new javax.swing.JPanel();
         lblDevice = new javax.swing.JLabel();
@@ -182,13 +200,14 @@ public class Frame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Xbox PC - Manuel Tusset");
-        setBackground(new java.awt.Color(20, 20, 20));
+        setBackground(null);
         setForeground(java.awt.Color.lightGray);
         setUndecorated(true);
 
-        pnlGeral.setBackground(new java.awt.Color(20, 20, 20));
+        pnlGeral.setBackground(null);
 
-        pnlGames.setBackground(new java.awt.Color(20, 20, 20));
+        pnlGames.setBackground(null);
+        pnlGames.setOpaque(false);
 
         javax.swing.GroupLayout pnlGamesLayout = new javax.swing.GroupLayout(pnlGames);
         pnlGames.setLayout(pnlGamesLayout);
@@ -205,7 +224,8 @@ public class Frame extends javax.swing.JFrame {
         lblDevice.setForeground(new java.awt.Color(255, 255, 255));
         lblDevice.setText("Device Connected:");
 
-        pnlFun.setBackground(new java.awt.Color(20, 20, 20));
+        pnlFun.setBackground(null);
+        pnlFun.setOpaque(false);
 
         javax.swing.GroupLayout pnlFunLayout = new javax.swing.GroupLayout(pnlFun);
         pnlFun.setLayout(pnlFunLayout);
@@ -222,7 +242,8 @@ public class Frame extends javax.swing.JFrame {
         lblUser.setForeground(new java.awt.Color(255, 255, 255));
         lblUser.setText("Welcome, User!");
 
-        pnlLastGame.setBackground(new java.awt.Color(20, 20, 20));
+        pnlLastGame.setBackground(null);
+        pnlLastGame.setOpaque(false);
 
         javax.swing.GroupLayout pnlLastGameLayout = new javax.swing.GroupLayout(pnlLastGame);
         pnlLastGame.setLayout(pnlLastGameLayout);
@@ -235,7 +256,8 @@ public class Frame extends javax.swing.JFrame {
             .addGap(0, 310, Short.MAX_VALUE)
         );
 
-        pnlButtons.setBackground(new java.awt.Color(20, 20, 20));
+        pnlButtons.setBackground(null);
+        pnlButtons.setOpaque(false);
 
         btnA.setIcon(Util.resizeImage(new ImageIcon(Frame.class.getResource("imgs/A.png")), 32, 32, Image.SCALE_SMOOTH));
 
@@ -300,7 +322,8 @@ public class Frame extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        pnlAdic.setBackground(new java.awt.Color(20, 20, 20));
+        pnlAdic.setBackground(null);
+        pnlAdic.setOpaque(false);
 
         javax.swing.GroupLayout pnlAdicLayout = new javax.swing.GroupLayout(pnlAdic);
         pnlAdic.setLayout(pnlAdicLayout);
