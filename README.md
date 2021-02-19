@@ -3,7 +3,6 @@
 ## Projeto focado em entretenimento e estudo de controle de joystick em aplicação Java Swing.
 
 ### Dependências utilizadas:
-- jPowershell (para rodar o comando de execução dos games) Ref. https://github.com/profesorfalken/jPowerShell
 - jinput (para obter os controles do joystick e suas demais características)
 
 #### Esse projeto não tem como intuito um código bem estruturado, o mesmo serviu somente para estudo das funcionalidades do controle de xbox one para windows.
