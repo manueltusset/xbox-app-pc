@@ -2,7 +2,7 @@ package com.tusset.Main;
 
 import com.tusset.utils.Actions;
 import com.tusset.utils.Util;
-import com.tusset.Fun.FunUtil;
+import com.tusset.Fun.util.FunUtil;
 import com.tusset.Games.GamesUtil;
 import java.awt.AWTException;
 import java.awt.Graphics;
