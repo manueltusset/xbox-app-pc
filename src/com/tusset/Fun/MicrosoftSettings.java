@@ -15,8 +15,8 @@ import javax.swing.border.MatteBorder;
  */
 public class MicrosoftSettings extends Fun {
 
-    private static final String COMMAND = "start primevideo:";
-    private static final String COMMAND_INFO = "Get-AppxPackage | where {$_.InstallLocation -ilike \"*primevideo*\"}";
+    private static final String COMMAND = "start ms-settings:";
+    private static final String COMMAND_INFO = "Get-AppxPackage | where {$_.InstallLocation -ilike \"*ms-settings*\"}";
     private static final int WIDTH_IMAGE = 170;
     private static final int HEIGHT_IMAGE = 170;
     private static final int POSITION_X = 200;
